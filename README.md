@@ -1,180 +1,53 @@
-\# Inovako YOLO Demo
+# Inovako YOLO Demo
 
+This is a small YOLO demo I prepared for the Inovako AI intern technical task.
 
+The project uses a pretrained YOLOv8n model with OpenCV to run real-time object detection from a webcam. I did not train a custom model in this demo; the main purpose was to understand the basic object detection flow and test YOLO on a live camera input.
 
-This project demonstrates a simple real-time object detection application using a pretrained YOLO model and OpenCV.
+## What it does
 
+- opens the webcam
+- runs YOLO detection on each frame
+- draws bounding boxes and labels
+- shows the FPS value
+- saves the current frame when `s` is pressed
+- exits when `q` is pressed
 
-
-\## Purpose
-
-
-
-The aim of this project is to understand the basic workflow of a real-time object detection system. The application captures frames from a webcam, sends each frame to a pretrained YOLO model, filters detections using simple rules, and visualizes the detected objects with bounding boxes, class labels, confidence scores, and FPS information.
-
-
-
-\## Technologies Used
-
-
-
-\- Python
-
-\- Ultralytics YOLO
-
-\- OpenCV
-
-\- Pretrained YOLOv8n model
-
-
-
-\## Project Structure
-
-
+## Files
 
 ```text
-
-inovako-yolo-demo/
-
-│
-
-├── main.py
-
-├── requirements.txt
-
-├── README.md
-
-├── .gitignore
-
-├── outputs/
-
-│   └── yolo\_result.png
-
-└── report.pdf
-
+main.py              main Python script
+requirements.txt     required packages
+outputs/             saved output image
+report.pdf           research report
 ```
 
-
-
-\## Installation
-
-
-
-First, install the required Python packages:
-
-
+## Installation
 
 ```bash
-
 pip install -r requirements.txt
-
 ```
 
-
-
-\## Run
-
-
-
-To run the application:
-
-
+## Run
 
 ```bash
-
 python main.py
-
 ```
 
-
-
-If Python is configured as `py` on Windows, this can also be used:
-
-
+If needed on Windows:
 
 ```bash
-
 py main.py
-
 ```
 
+## Output
 
-
-\## How It Works
-
-
-
-1\. The webcam is opened using OpenCV.
-
-2\. Frames are captured continuously from the camera.
-
-3\. Each frame is passed to the pretrained YOLO model.
-
-4\. YOLO performs object detection on the frame.
-
-5\. The model returns bounding boxes, class labels, and confidence scores.
-
-6\. Basic filtering is applied using confidence threshold and minimum bounding box area.
-
-7\. The detection results are drawn on the frame.
-
-8\. The FPS value is displayed on the screen.
-
-9\. Press `s` to save the current output image.
-
-10\. Press `q` to exit the application.
-
-
-
-\## Output
-
-
-
-An example output is provided in the `outputs/` folder.
-
-
-
-The output shows that the model can detect objects in real time using the webcam. The FPS value is displayed to observe real-time performance.
-
-
-
-\## Notes
-
-
-
-This project does not train a new model from scratch. It uses a pretrained YOLOv8n model for inference.
-
-
-
-The main goal of this demo is to understand the basic object detection pipeline:
-
-
+The saved example result is in:
 
 ```text
-
-Webcam frame
-
-&#x20;     ↓
-
-YOLO model
-
-&#x20;     ↓
-
-Bounding box + class label + confidence score
-
-&#x20;     ↓
-
-Filtering
-
-&#x20;     ↓
-
-Visualization with OpenCV
-
+outputs/yolo_result.png
 ```
 
+## Notes
 
-
-This simple pipeline represents the foundation of many real-time computer vision systems.
-
-
-
+The demo uses `yolov8n.pt`, which is a lightweight pretrained YOLO model. It is fast enough for a simple webcam test, but it can still make mistakes in some scenes. For a real application, the model output should be filtered and tested more carefully.
